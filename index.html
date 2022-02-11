@@ -7,13 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="stylesheet" href="css/todolist.css" />
-    <script src="js/todolist.js"></script>
 </head>
 <body>
-    <input id="message" type="text" placeholder="Description" />
-    <button id="addButton">Add</button>
+    <h1>Eugene Serb – ToDo List</h1>
+
+    <br />
     <hr />
-    <ul id="desk"></ul>
+    <br />
+
+    <div class="todoList-app">
+
+        <div class="todoList-form">
+            <input type="text" placeholder="Description" class="todoList-form__description-task" />
+            <button class="todoList-form__addTaskButton">Add</button>
+        </div>
+
+        <br />
+        <hr />
+        <br />
+
+        <h2>Today tasks:</h2>
+
+        <ul class="todoList-wrapper">
+            <!--<li class="taskItem">
+                <span class="taskItem__description">Погулять с собакой</span>
+                <input class="taskItem__complete" type="checkbox" />
+                <button class="taskItem__deleteButton">Delete</button>
+            </li>-->
+        </ul>
+
+    </div>
+
+    <script src="js/todolist.js"></script>
 </body>
 </html>
 

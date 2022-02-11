@@ -1,74 +1,80 @@
-window.onload = function () {
+const addTaskButton = document.querySelector('.todoList-form__addTaskButton');
+const descriptionTaskInput = document.querySelector('.todoList-form__description-task');
+const todoListWrapper = document.querySelector('.todoList-wrapper');
 
-    let todoList = [];
+let tasks;
+!localStorage.tasks ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
 
-    if (localStorage.getItem('todo') != undefined) {
-        todoList = JSON.parse(localStorage.getItem('todo'));
-        displayTasks();
-    }
+let todoListItems = [];
 
-    function displayTasks() {
-        
-        let out = '';
+function Task(description) {
+    this.description = description;
+    this.completed = false;
+};
 
-        for (var key in todoList) {
-            out += `
-                <li ${todoList[key].important ? 'class="important"' : '' }>
-                    <input id="item_${key}" type="checkbox" ${todoList[key].check ? "checked" : ""} />
-                    <label for="item_${key}">${todoList[key].todo}</label>
-                </li>`;
-        };
+const createTemplate = (task, index) => {
+    return `
+        <li class="taskItem ${task.completed ? 'taskItem_completed' : ''}">
+            <span class="taskItem__description">${task.description}</span>
+            <input onclick="completeTask(${index})" class="taskItem__complete" type="checkbox" ${task.completed ? 'checked' : ''} />
+            <button onclick="deleteTask(${index})" class="taskItem__deleteButton">Delete</button>
+        </li>`
+};
 
-        document.querySelector('#desk').innerHTML = out;
-    };
+const filterTasks = () => {
+    const activeTasks = tasks.length && tasks.filter(item => item.completed == false);
+    const completedTasks = tasks.length && tasks.filter(item => item.completed == true);
+    tasks = [...activeTasks, ...completedTasks];
+};
 
-    document.querySelector('#desk').addEventListener('change', () => {
-        let idInput = event.target.getAttribute('id');
-        let forLabel = document.querySelector('#desk').querySelector('[for=' + idInput + ']');
-        let valueLabel = forLabel.innerHTML;
+const fillHtmlList = () => {
+    todoListWrapper.innerHTML = '';
 
-        todoList.forEach(function(item) {
-            if (item.todo === valueLabel) {
-                item.check = !item.check;
-                localStorage.setItem('todo', JSON.stringify(todoList));
-            }
+    if (tasks.length > 0) {
+
+        filterTasks();
+
+        tasks.forEach((item, index) => {
+            todoListWrapper.innerHTML += createTemplate(item, index);
         });
-    });
 
-    document.querySelector('#desk').addEventListener('contextmenu', function (event) {
-
-        event.preventDefault();
-
-        todoList.forEach(function (item, index) {
-            if (item.todo === event.target.innerHTML) {
-                if (event.ctrlKey || event.metaKey) {
-                    todoList.splice(index, 1);
-                } else {
-                    item.important = !item.important;
-                }
-                displayTasks();
-                localStorage.setItem('todo', JSON.stringify(todoList));
-            }
-        });
-    });
-
-    document.querySelector('#addButton').onclick = function () {
-
-        const message = document.querySelector('#message');
-        if (!message.value) return;
-
-        let newTask = {
-            todo: message.value,
-            check: false,
-            important: false
-        };
-
-        todoList.push(newTask);
-
-        displayTasks();
-        message.value = '';
-
-        localStorage.setItem('todo', JSON.stringify(todoList));
+        todoListItems = document.querySelectorAll('.taskItem');
     };
 };
+
+fillHtmlList();
+
+const updateLocal = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+const completeTask = (index) => {
+    tasks[index].completed = !tasks[index].completed;
+
+    if (tasks[index].completed) {
+        todoListItems[index].classList.add('taskItem_completed');
+    } else {
+        todoListItems[index].classList.remove('taskItem_completed');
+    };
+
+    updateLocal();
+    fillHtmlList();
+};
+
+const deleteTask = (index) => {
+    todoListItems[index].classList.add('deletion');
+
+    setTimeout(() => {
+        tasks.splice(index, 1);
+        updateLocal();
+        fillHtmlList();
+    }, 500)
+};
+
+addTaskButton.addEventListener('click', () => {
+    tasks.push(new Task(descriptionTaskInput.value));
+    updateLocal();
+    fillHtmlList();
+    descriptionTaskInput.value = '';
+});
 
