@@ -1,4 +1,5 @@
 const addTaskButton = document.querySelector('.todoList-form__addTaskButton');
+const deleteAllTaskButton = document.querySelector('.todoList-form__deleteAllTaskButton');
 const descriptionTaskInput = document.querySelector('.todoList-form__description-task');
 const todoListWrapper = document.querySelector('.todoList-wrapper');
 
@@ -10,21 +11,28 @@ let todoListItems = [];
 function Task(description) {
     this.description = description;
     this.completed = false;
+    this.important = false;
 };
 
 const createTemplate = (task, index) => {
     return `
-        <li class="taskItem ${task.completed ? 'taskItem_completed' : ''}">
+        <li class="taskItem ${task.completed ? 'taskItem_completed' : ''} ${task.important ? 'taskItem_important' : ''}">
             <span class="taskItem__description">${task.description}</span>
-            <input onclick="completeTask(${index})" class="taskItem__complete" type="checkbox" ${task.completed ? 'checked' : ''} />
-            <button onclick="deleteTask(${index})" class="taskItem__deleteButton">Delete</button>
+            <div class="taskItem__buttonsContainer">
+                <input onclick="completeTask(${index})" class="taskItem__complete" type="checkbox" ${task.completed ? 'checked' : ''} />
+                <input onclick="markImportantTask(${index})" class="taskItem__important" type="checkbox" ${task.important ? 'checked' : ''} />
+                <button onclick="deleteTask(${index})" class="taskItem__deleteButton">Delete</button>
+            </div>
         </li>`
 };
 
 const filterTasks = () => {
-    const activeTasks = tasks.length && tasks.filter(item => item.completed == false);
-    const completedTasks = tasks.length && tasks.filter(item => item.completed == true);
-    tasks = [...activeTasks, ...completedTasks];
+    const activeImportantTasks = tasks.length && tasks.filter(item => item.completed == false && item.important == true);
+    const activeTasks = tasks.length && tasks.filter(item => item.completed == false && item.important == false);
+    const completedImportantTasks = tasks.length && tasks.filter(item => item.completed == true && item.important == true);
+    const completedTasks = tasks.length && tasks.filter(item => item.completed == true && item.important == false);
+
+    tasks = [...activeImportantTasks, ...activeTasks, ...completedImportantTasks, ...completedTasks];
 };
 
 const fillHtmlList = () => {
@@ -61,6 +69,13 @@ const completeTask = (index) => {
     fillHtmlList();
 };
 
+const markImportantTask = (index) => {
+    tasks[index].important = !tasks[index].important;
+
+    updateLocal();
+    fillHtmlList();
+};
+
 const deleteTask = (index) => {
     todoListItems[index].classList.add('deletion');
 
@@ -76,5 +91,18 @@ addTaskButton.addEventListener('click', () => {
     updateLocal();
     fillHtmlList();
     descriptionTaskInput.value = '';
+});
+
+deleteAllTaskButton.addEventListener('click', () => {
+
+    todoListItems.forEach((item) => {
+        item.classList.add('deletion');
+    });
+
+    setTimeout(() => {
+        tasks = [];
+        updateLocal();
+        fillHtmlList();
+    }, 500)
 });
 
