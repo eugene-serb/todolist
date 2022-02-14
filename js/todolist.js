@@ -19,8 +19,8 @@ const createTemplate = (task, index) => {
         <li class="taskItem ${task.completed ? 'taskItem_completed' : ''} ${task.important ? 'taskItem_important' : ''}">
             <span class="taskItem__description">${task.description}</span>
             <div class="taskItem__buttonsContainer">
-                <input onclick="completeTask(${index})" class="taskItem__complete" type="checkbox" ${task.completed ? 'checked' : ''} />
-                <input onclick="markImportantTask(${index})" class="taskItem__important" type="checkbox" ${task.important ? 'checked' : ''} />
+                <button onclick="completeTask(${index})" class="taskItem__complete">Ready: ${task.completed ? 'YES' : 'NO'}</button>
+                <button onclick="markImportantTask(${index})" class="taskItem__important">Important: ${task.important ? 'YES' : 'NO'}</button>
                 <button onclick="deleteTask(${index})" class="taskItem__deleteButton">Delete</button>
             </div>
         </li>`
