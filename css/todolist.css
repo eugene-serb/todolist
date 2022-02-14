@@ -40,18 +40,14 @@
         overflow-wrap: anywhere;
     }
 
-.taskItem__buttonsContainer {
-    text-align: right;
-}
-
 .taskItem_completed {
     background-color: #F1F1F1;
     opacity: 0.5;
 }
 
-    .taskItem_completed > span {
-        text-decoration: line-through;
-    }
+.taskItem_completed > span {
+    text-decoration: line-through;
+}
 
 .taskItem_important {
     background-color: #F1F1F1;
@@ -65,8 +61,14 @@
 @keyframes opacity {
     from {
         opacity: 1;
-    } to {
-          opacity: 0;
-      }
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.taskItem__buttonsContainer {
+    text-align: right;
 }
 
