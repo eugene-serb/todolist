@@ -12,6 +12,7 @@
 
     <link rel="canonical" href="https://eugene-serb.github.io/todolist/" />
     <link rel="shortcut icon" type="image/x-icon" href="https://eugene-serb.github.io/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="https://eugene-serb.github.io/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="css/todolist.css" />
 
     <meta property="og:locale" content="en_US" />
@@ -62,26 +63,55 @@
     <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-    <section class="container">
 
-        <div class="todoList-app">
+    <header class="header">
+        <div class="header-wrapper container">
 
-            <h1>ToDo List</h1>
-
-            <hr />
-
-            <div class="todoList-form">
-                <input type="text" placeholder="Description" class="todoList-form__description-task" />
-                <button class="todoList-form__addTaskButton">Add</button>
-                <button class="todoList-form__deleteAllTaskButton">Delete</button>
+            <div class="logo-wrapper">
+                <span class="logo-wrapper__logo">Eugene Serb.</span>
             </div>
 
-            <hr />
+            <nav class="menu-wrapper">
+                <ul class="navigation">
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/" target="_self" class="navigation__link">Home</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#projects" target="_self" class="navigation__link">Projects</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#services" target="_self" class="navigation__link">Services</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#skills" target="_self" class="navigation__link">Skills</a>
+                    </li>
+                </ul>
+            </nav>
 
-            <h2>Today tasks:</h2>
+        </div>
+    </header>
 
-            <ul class="todoList-wrapper">
-                <!--<li class="taskItem">
+    <main class="page container">
+
+        <section class="todoList-app">
+
+                <h1>ToDo List</h1>
+
+                <hr />
+
+                <div class="todoList-form">
+                    <input type="text" placeholder="Description" class="todoList-form__description-task" />
+                    <button class="todoList-form__addTaskButton">Add</button>
+                    <button class="todoList-form__deleteAllTaskButton">Delete</button>
+                </div>
+
+                <hr />
+                <br />
+
+                <h2>Today tasks:</h2>
+
+                <ul class="todoList-wrapper">
+                    <!--<li class="taskItem">
                     <span class="taskItem__description">Побрить собаку</span>
                     <div class="taskItem__buttonsContainer">
                         <button onclick="" class="taskItem__complete">Ready: off</button>
@@ -89,12 +119,14 @@
                         <button onclick="" class="taskItem__deleteButton">Delete</button>
                     </div>
                 </li>-->
-            </ul>
+                </ul>
 
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <script src="js/todolist.js"></script>
+    <script src="https://eugene-serb.github.io/js/scripts.js"></script>
     <noscript><div><img src="https://mc.yandex.ru/watch/79722217" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
