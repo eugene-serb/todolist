@@ -70,30 +70,33 @@
     text-align: right;
 }
 
-.taskItem__deleteButton {
-    background: transparent;
-    background-image: url("img/delete_black_24dp.svg");
-    background-repeat: no-repeat;
-    border: none;
+.taskItem__button {
+    padding: 0;
+    margin: 0;
+    border: 0;
     width: 24px;
     height: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
 }
 
-/*.taskItem__complete {
-    background: transparent;
-    background-image: url("img/delete_black_24dp.svg");
-    background-repeat: no-repeat;*/
-    /*border: none;*/
-    /*width: 24px;
-    height: 24px;
+.taskItem__isNotCompleted {
+    background-image: url(../img/check_box_outline_blank_black_24dp.svg);
 }
 
-.taskItem__important {
-    background: transparent;
-    background-image: url("img/delete_black_24dp.svg");
-    background-repeat: no-repeat;*/
-    /*border: none;*/
-    /*width: 24px;
-    height: 24px;
-}*/
+.taskItem__isCompleted {
+    background-image: url(../img/check_box_black_24dp.svg);
+}
+
+.taskItem__isNotImportant {
+    background-image: url(../img/star_border_black_24dp.svg);
+}
+
+.taskItem__isImportant {
+    background-image: url(../img/star_black_24dp.svg);
+}
+
+.taskItem__deleteButton {
+    background-image: url(../img/delete_black_24dp.svg);
+}
 
