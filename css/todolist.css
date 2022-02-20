@@ -37,7 +37,6 @@
 
 .taskItem__description {
     overflow-wrap: anywhere;
-    align-self: flex-end;
 }
 
 .taskItem_completed {
@@ -66,13 +65,11 @@
     }
 }
 
-.taskItem__buttonsContainer {
-    text-align: right;
-}
+.taskItem__buttonsContainer {}
 
 .taskItem__button {
     padding: 0;
-    margin: 0;
+    margin: 0 8px 0 0;
     border: 0;
     width: 24px;
     height: 24px;
@@ -80,23 +77,50 @@
     background-repeat: no-repeat;
 }
 
-.taskItem__isNotCompleted {
-    background-image: url(../img/check_box_outline_blank_black_24dp.svg);
+@media (prefers-color-scheme: light) {
+
+    .taskItem__isNotCompleted {
+        background-image: url(../img/check_box_outline_blank_black_24dp.svg);
+    }
+
+    .taskItem__isCompleted {
+        background-image: url(../img/check_box_black_24dp.svg);
+    }
+
+    .taskItem__isNotImportant {
+        background-image: url(../img/star_border_black_24dp.svg);
+    }
+
+    .taskItem__isImportant {
+        background-image: url(../img/star_black_24dp.svg);
+    }
+
+    .taskItem__deleteButton {
+        background-image: url(../img/delete_black_24dp.svg);
+    }
+
 }
 
-.taskItem__isCompleted {
-    background-image: url(../img/check_box_black_24dp.svg);
-}
+@media (prefers-color-scheme: dark) {
 
-.taskItem__isNotImportant {
-    background-image: url(../img/star_border_black_24dp.svg);
-}
+    .taskItem__isNotCompleted {
+        background-image: url(../img/check_box_outline_blank_white_24dp.svg);
+    }
 
-.taskItem__isImportant {
-    background-image: url(../img/star_black_24dp.svg);
-}
+    .taskItem__isCompleted {
+        background-image: url(../img/check_box_white_24dp.svg);
+    }
 
-.taskItem__deleteButton {
-    background-image: url(../img/delete_black_24dp.svg);
+    .taskItem__isNotImportant {
+        background-image: url(../img/star_border_white_24dp.svg);
+    }
+
+    .taskItem__isImportant {
+        background-image: url(../img/star_white_24dp.svg);
+    }
+
+    .taskItem__deleteButton {
+        background-image: url(../img/delete_white_24dp.svg);
+    }
 }
 
