@@ -21,7 +21,7 @@ const createTemplate = (task, index) => {
             <div class="taskItem__buttonsContainer">
                 <button onclick="completeTask(${index})" class="taskItem__complete">Ready: ${task.completed ? 'YES' : 'NO'}</button>
                 <button onclick="markImportantTask(${index})" class="taskItem__important">Important: ${task.important ? 'YES' : 'NO'}</button>
-                <button onclick="deleteTask(${index})" class="taskItem__deleteButton">Delete</button>
+                <button onclick="deleteTask(${index})" class="taskItem__deleteButton"></button>
             </div>
         </li>`
 };
