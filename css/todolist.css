@@ -1,0 +1,128 @@
+/* ------------- */
+/* TODO LIST APP */
+/* ------------- */
+
+.todoList-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.todoList-form__description-task {
+    grid-column: 1 / 3;
+}
+
+.todoList-form__addTaskButton {
+    grid-column: 1 / 2;
+}
+
+.todoList-form__deleteAllTaskButton {
+    grid-column: 2 / 3;
+}
+
+.todoList-wrapper {
+    list-style: none;
+    padding: 0;
+}
+
+.taskItem {
+    margin: 8px 0;
+    padding: 8px;
+    border: 2px dashed var(--color-border);
+    border-radius: 4px;
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px
+}
+
+.taskItem__description {
+    overflow-wrap: anywhere;
+    align-self: center;
+}
+
+.taskItem_completed {
+    opacity: 0.5;
+}
+
+    .taskItem_completed > .taskItem__description {
+        text-decoration: line-through;
+    }
+
+.taskItem_important {
+    border: 2px solid var(--color-link-hover);
+}
+
+.taskItem.deletion {
+    animation: opacity 0.5s ease-in-out;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.taskItem__buttonsContainer {}
+
+.taskItem__button {
+    padding: 0;
+    margin: 8px;
+    border: 0;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+@media (prefers-color-scheme: light) {
+
+    .taskItem__isNotCompleted {
+        background-image: url(../img/check_box_outline_blank_black_24dp.svg);
+    }
+
+    .taskItem__isCompleted {
+        background-image: url(../img/check_box_black_24dp.svg);
+    }
+
+    .taskItem__isNotImportant {
+        background-image: url(../img/star_border_black_24dp.svg);
+    }
+
+    .taskItem__isImportant {
+        background-image: url(../img/star_black_24dp.svg);
+    }
+
+    .taskItem__deleteButton {
+        background-image: url(../img/delete_black_24dp.svg);
+    }
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .taskItem__isNotCompleted {
+        background-image: url(../img/check_box_outline_blank_white_24dp.svg);
+    }
+
+    .taskItem__isCompleted {
+        background-image: url(../img/check_box_white_24dp.svg);
+    }
+
+    .taskItem__isNotImportant {
+        background-image: url(../img/star_border_white_24dp.svg);
+    }
+
+    .taskItem__isImportant {
+        background-image: url(../img/star_white_24dp.svg);
+    }
+
+    .taskItem__deleteButton {
+        background-image: url(../img/delete_white_24dp.svg);
+    }
+}
+
