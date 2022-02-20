@@ -17,12 +17,12 @@ function Task(description) {
 const createTemplate = (task, index) => {
     return `
         <li class="taskItem ${task.completed ? 'taskItem_completed' : ''} ${task.important ? 'taskItem_important' : ''}">
-            <span class="taskItem__description">${task.description}</span>
             <div class="taskItem__buttonsContainer">
                 <button onclick="completeTask(${index})" class="taskItem__button ${task.completed ? 'taskItem__isCompleted' : 'taskItem__isNotCompleted'}"></button>
                 <button onclick="markImportantTask(${index})" class="taskItem__button ${task.important ? 'taskItem__isImportant' : 'taskItem__isNotImportant'}"></button>
                 <button onclick="deleteTask(${index})" class="taskItem__button taskItem__deleteButton"></button>
             </div>
+            <span class="taskItem__description">${task.description}</span>
         </li>`
 };
 

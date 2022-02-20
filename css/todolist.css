@@ -32,7 +32,8 @@
     border-radius: 4px;
     background-color: var(--color-background);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 16px
 }
 
 .taskItem__description {
@@ -69,7 +70,7 @@
 
 .taskItem__button {
     padding: 0;
-    margin: 0 8px 0 0;
+    margin: 0 8px 8px 0;
     border: 0;
     width: 24px;
     height: 24px;
