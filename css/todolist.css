@@ -5,7 +5,7 @@
 .todoList-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 4px;
 }
 
 .todoList-form__description-task {
