@@ -1,6 +1,14 @@
-/* ------------- */
-/* TODO LIST APP */
-/* ------------- */
+/* --------- */
+/* TODO LIST */
+/* --------- */
+
+@charset 'UTF-8';
+
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
 
 .todoList-form {
     display: grid;
