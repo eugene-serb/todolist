@@ -26,7 +26,7 @@ class ToDoList {
 
     completeTask = (index) => {
         this.tasks[index].completed = !this.tasks[index].completed;
-        if (tasks[index].completed) {
+        if (this.tasks[index].completed) {
             this.todoListItems[index].classList.add('taskItem_completed');
         } else {
             this.todoListItems[index].classList.remove('taskItem_completed');
@@ -43,7 +43,7 @@ class ToDoList {
         this.todoListItems[index].classList.add('deletion');
 
         setTimeout(() => {
-            tasks.splice(index, 1);
+            this.tasks.splice(index, 1);
             this.#updateLocal();
             this.#fillHtmlList();
         }, 500)
