@@ -87,6 +87,10 @@
     background-repeat: no-repeat;
 }
 
+    .taskItem__button:hover {
+        border: none;
+    }
+
 @media (prefers-color-scheme: light) {
 
     .taskItem__isNotCompleted {
