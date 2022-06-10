@@ -2,7 +2,7 @@
 /* TODO LIST */
 /* --------- */
 
-'use strict'
+'use strict';
 
 class Task {
     constructor(description) {
@@ -46,7 +46,7 @@ class ToDoList {
             this.tasks.splice(index, 1);
             this.#setLocalStorage();
             this.#fillHtmlList();
-        }, 500)
+        }, 500);
     };
 
     #createTemplate = (task, index) => {
@@ -58,7 +58,7 @@ class ToDoList {
                 <button onclick="TODOLIST.deleteTask(${index})" class="taskItem__button taskItem__deleteButton"></button>
             </div>
             <span class="taskItem__description">${task.description}</span>
-        </li>`
+        </li>`;
     };
     #filterTasks = () => {
         const activeImportantTasks = this.tasks.length && this.tasks.filter(item => item.completed == false && item.important == true);
