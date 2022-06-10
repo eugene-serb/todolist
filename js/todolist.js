@@ -40,7 +40,7 @@ class ToDoList {
         this.#fillHtmlList();
     };
     deleteTask = (index) => {
-        this.todoListItems[index].classList.add('deletion');
+        this.todoListItems[index].classList.add('taskItem_deletion');
 
         setTimeout(() => {
             this.tasks.splice(index, 1);
@@ -102,7 +102,7 @@ class ToDoList {
         });
         this.$deleteAllTaskButton.addEventListener('click', () => {
             this.todoListItems.forEach((item) => {
-                item.classList.add('deletion');
+                item.classList.add('taskItem_deletion');
             });
             setTimeout(() => {
                 this.tasks = [];
