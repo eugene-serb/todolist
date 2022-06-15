@@ -2,7 +2,7 @@
 /* TODO LIST */
 /* --------- */
 
-'use strict'
+'use strict';
 
 class Task {
     constructor(description) {
@@ -18,7 +18,7 @@ class ToDoList {
         this.#eventListeners();
 
         this.tasks;
-        localStorage.tasks ? this.tasks = JSON.parse(localStorage.getItem('tasks')) : this.tasks = [];
+        this.#getLocalStorage();
         this.todoListItems = [];
 
         this.#fillHtmlList();
@@ -31,22 +31,22 @@ class ToDoList {
         } else {
             this.todoListItems[index].classList.remove('taskItem_completed');
         };
-        this.#updateLocal();
+        this.#setLocalStorage();
         this.#fillHtmlList();
     };
     markImportantTask = (index) => {
         this.tasks[index].important = !this.tasks[index].important;
-        this.#updateLocal();
+        this.#setLocalStorage();
         this.#fillHtmlList();
     };
     deleteTask = (index) => {
-        this.todoListItems[index].classList.add('deletion');
+        this.todoListItems[index].classList.add('taskItem_deletion');
 
         setTimeout(() => {
             this.tasks.splice(index, 1);
-            this.#updateLocal();
+            this.#setLocalStorage();
             this.#fillHtmlList();
-        }, 500)
+        }, 500);
     };
 
     #createTemplate = (task, index) => {
@@ -58,7 +58,7 @@ class ToDoList {
                 <button onclick="TODOLIST.deleteTask(${index})" class="taskItem__button taskItem__deleteButton"></button>
             </div>
             <span class="taskItem__description">${task.description}</span>
-        </li>`
+        </li>`;
     };
     #filterTasks = () => {
         const activeImportantTasks = this.tasks.length && this.tasks.filter(item => item.completed == false && item.important == true);
@@ -78,8 +78,11 @@ class ToDoList {
             this.todoListItems = document.querySelectorAll('.taskItem');
         };
     };
-    #updateLocal = () => {
+    #setLocalStorage = () => {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    };
+    #getLocalStorage = () => {
+        localStorage.tasks ? this.tasks = JSON.parse(localStorage.getItem('tasks')) : this.tasks = [];
     };
 
     #DOMs = () => {
@@ -90,18 +93,20 @@ class ToDoList {
     };
     #eventListeners = () => {
         this.$addTaskButton.addEventListener('click', () => {
-            this.tasks.push(new Task(this.$descriptionTaskInput.value));
-            this.#updateLocal();
-            this.#fillHtmlList();
-            this.$descriptionTaskInput.value = '';
+            if (this.$descriptionTaskInput.value) {
+                this.tasks.push(new Task(this.$descriptionTaskInput.value));
+                this.#setLocalStorage();
+                this.#fillHtmlList();
+                this.$descriptionTaskInput.value = '';
+            };
         });
         this.$deleteAllTaskButton.addEventListener('click', () => {
             this.todoListItems.forEach((item) => {
-                item.classList.add('deletion');
+                item.classList.add('taskItem_deletion');
             });
             setTimeout(() => {
                 this.tasks = [];
-                this.#updateLocal();
+                this.#setLocalStorage();
                 this.#fillHtmlList();
             }, 500);
         });
