@@ -1,6 +1,5 @@
-# todolist
-
-ToDoList in ***JavaScript*** and ***HTML with CSS***. **[[rep](https://github.com/eugene-serb/todolist), [site](https://eugene-serb.github.io/todolist/)]**
+# ToDoList
+ToDoList in ***JavaScript*** and ***HTML with CSS***. **[[rep](https://github.com/eugene-serb/todolist/), [site](https://eugene-serb.github.io/todolist/)]**.
 
 This is a simple to-do list web application. Helps you organize tasks and plan projects.
 
