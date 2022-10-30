@@ -6,8 +6,9 @@ This is a simple to-do list web application. Helps you organize tasks and plan p
 There is a few files:
 1. ***index.html*** – a file with a form and another elements.
 2. ***css/todolist.css*** – styles for the todolist application, but for now some of them are in the main styles on [this page](https://eugene-serb.github.io/).
-3. ***js/todolist.js*** – all scripts in the todolist application.
-4. ***img/%file name%.svg*** – all application icons.
+3. ***css/index.css*** – index of the styles for all the todolist application.
+4. ***index.js*** – all scripts in the todolist application.
+5. ***img/%file name%.svg*** – all application icons.
 
 Styles now in todolist.css describe the block sizes and the positions of the blocks on the page. I recommend use your own html form and css styles for your application.
 
@@ -26,4 +27,3 @@ Todolist.js is used for the entire operation of this application. For this appli
 Template for task items is in todolist.js, const createTemplate.
 
 If you are interested in this or my other projects, or would like to suggest and share ideas with me, or just talk to me, contact me: *[@eugene_serb](https://t.me/eugene_serb)*
-

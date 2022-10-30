@@ -118,4 +118,3 @@ class ToDoList {
 /* -------------- */
 
 const TODOLIST = new ToDoList();
-
