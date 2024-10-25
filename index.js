@@ -1,7 +1,3 @@
-/* --------- */
-/* TODO LIST */
-/* --------- */
-
 'use strict';
 
 class Task {
@@ -34,11 +30,13 @@ class ToDoList {
     this.#setLocalStorage();
     this.#fillHtmlList();
   };
+  
   markImportantTask = (index) => {
     this.tasks[index].important = !this.tasks[index].important;
     this.#setLocalStorage();
     this.#fillHtmlList();
   };
+
   deleteTask = (index) => {
     this.todoListItems[index].classList.add('taskItem_deletion');
 
@@ -60,6 +58,7 @@ class ToDoList {
             <span class="taskItem__description">${task.description}</span>
         </li>`;
   };
+
   #filterTasks = () => {
     const activeImportantTasks = this.tasks.length && this.tasks.filter(item => item.completed == false && item.important == true);
     const activeTasks = this.tasks.length && this.tasks.filter(item => item.completed == false && item.important == false);
@@ -68,6 +67,7 @@ class ToDoList {
 
     this.tasks = [...activeImportantTasks, ...activeTasks, ...completedImportantTasks, ...completedTasks];
   };
+
   #fillHtmlList = () => {
     this.$todoListWrapper.innerHTML = '';
     if (this.tasks.length > 0) {
@@ -78,9 +78,11 @@ class ToDoList {
       this.todoListItems = document.querySelectorAll('.taskItem');
     };
   };
+
   #setLocalStorage = () => {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   };
+
   #getLocalStorage = () => {
     localStorage.tasks ? this.tasks = JSON.parse(localStorage.getItem('tasks')) : this.tasks = [];
   };
@@ -91,6 +93,7 @@ class ToDoList {
     this.$descriptionTaskInput = document.querySelector('.todoList-form__description-task');
     this.$todoListWrapper = document.querySelector('.todoList-wrapper');
   };
+
   #eventListeners = () => {
     this.$addTaskButton.addEventListener('click', () => {
       if (this.$descriptionTaskInput.value) {
@@ -112,9 +115,5 @@ class ToDoList {
     });
   };
 };
-
-/* -------------- */
-/* INITIALIZATION */
-/* -------------- */
 
 const TODOLIST = new ToDoList();
